@@ -18,6 +18,24 @@ import EditIcon from '@mui/icons-material/Edit';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import NavigationIcon from '@mui/icons-material/Navigation';
 
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyC-vQgJdze_0ocWc558VZhvhxcl_YtxZKQ",
+  authDomain: "todo-list-eee33.firebaseapp.com",
+  projectId: "todo-list-eee33",
+  storageBucket: "todo-list-eee33.appspot.com",
+  messagingSenderId: "694577138380",
+  appId: "1:694577138380:web:5951b31eb00cea78a19069"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+
 function Home() {
   const [loggedIn, setLoggedIn] = useState(false);
   const [register, setRegister] = useState({ name: '', password: '' });
@@ -155,7 +173,7 @@ function List() {
         <h2>Todo List</h2>
         <form className='form' onSubmit={handleSubmit}>
           <input value={input} type='text' className='user-input' onChange={e => addTodo(e.target.value)}/>
-          <Button variant='contained' className='button'>Submit</Button>
+          <button variant='contained' className='button'>Submit</button>
         </form>
 
         <ol className='list'>
@@ -167,7 +185,7 @@ function List() {
                 onChange={(e) => handleCompleted(todo.id, e.target.checked)}
               />
               {todo.value}
-              <Button variant="outlined" color='error' className='delete-button' onClick={() => handleDelete(todo.id)}>Delete</Button>
+              <button variant="outlined" color='error' className='delete-button' onClick={() => handleDelete(todo.id)}>Delete</button>
             </li>
           ))}
         </ol>
