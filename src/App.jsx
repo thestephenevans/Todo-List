@@ -173,7 +173,7 @@ function List() {
         <h2>Todo List</h2>
         <form className='form' onSubmit={handleSubmit}>
           <input value={input} type='text' className='user-input' onChange={e => addTodo(e.target.value)}/>
-          <button variant='contained' className='button'>Submit</button>
+          <button className='button'>Submit</button>
         </form>
 
         <ol className='list'>
