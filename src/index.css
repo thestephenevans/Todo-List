@@ -147,3 +147,10 @@ form{
   display: flex;
   justify-content: center;
 }
+
+.nameservers{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 20px;
+}

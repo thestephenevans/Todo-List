@@ -8,6 +8,7 @@ import Tiktok from './components/Tiktok';
 import Predictions from './components/Predictions';
 import Scraper from './components/Scraper';
 import Weather from './components/Weather';
+import Whois from './components/Whois';
 
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
@@ -42,6 +43,7 @@ function App() {
           <Button variant='outlined' onClick={() => handleNavigation('trends')}>TikTok Trends</Button>
           <Button variant='outlined' onClick={() => handleNavigation('predictions')}>Predictions</Button>
           <Button variant='outlined' onClick={() => handleNavigation('scraper')}>Scraper</Button>
+          <Button variant='outlined' onClick={() => handleNavigation('whois')}>Whois Lookup</Button>
         </nav>
         <div className='weather'>
           <Weather />
@@ -55,6 +57,7 @@ function App() {
         {activeElement === 'trends' && <Tiktok />}
         {activeElement === 'predictions' && <Predictions />}
         {activeElement === 'scraper' && <Scraper />}
+        {activeElement === 'whois' && <Whois />}
       </div>
 
       <div className='footer'>
