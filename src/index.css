@@ -154,3 +154,11 @@ form{
   justify-content: center;
   margin-top: 20px;
 }
+
+.records{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 20px;
+  gap: 5px;
+}
