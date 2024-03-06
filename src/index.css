@@ -141,3 +141,9 @@ form{
   display: flex;
   flex-direction: column;
 }
+
+.footer{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}

@@ -1,7 +1,5 @@
-import { useState, useEffect } from 'react'; // Import useEffect hook
+import React, { useState, useEffect } from 'react'; // Import useEffect hook
 import './App.css';
-import axios from "axios";
-import { saveAs } from 'file-saver';
 
 import Home from './components/Home';
 import List from './components/List';
@@ -9,6 +7,7 @@ import Redirects from './components/Redirects';
 import Tiktok from './components/Tiktok';
 import Predictions from './components/Predictions';
 import Scraper from './components/Scraper';
+import Weather from './components/Weather';
 
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
@@ -19,49 +18,15 @@ import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import Fab from '@mui/material/Fab';
-import AddIcon from '@mui/icons-material/Add';
-import EditIcon from '@mui/icons-material/Edit';
+import BottomNavigation from '@mui/material/BottomNavigation';
+import BottomNavigationAction from '@mui/material/BottomNavigationAction';
+import RestoreIcon from '@mui/icons-material/Restore';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import NavigationIcon from '@mui/icons-material/Navigation';
-
-
-const Weather = () => {
-  const [city, setCity] = useState("");
-  const [weatherData, setWeatherData] = useState(null);
-
-  const fetchWeatherData = async () => {
-    try {
-      const response = await axios.get(
-        `https://api.openweathermap.org/data/2.5/weather?q=heathfield&appid=50c8a3737e61d67daa345d8590d43a6e`
-      );
-      setWeatherData(response.data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  useEffect(() => {
-    fetchWeatherData();
-  }, [city]);
-
-  return (
-    <>
-      <div>
-        {weatherData && (
-          <div>
-            <h2>{weatherData.name}</h2>
-            <p>{weatherData.weather[0].description}</p>
-            <p>Temperature: {weatherData.main.temp}</p>
-          </div>
-        )}
-      </div>
-    </>
-  );
-};
+import LocationOnIcon from '@mui/icons-material/LocationOn';
 
 function App() {
   const [activeElement, setActiveElement] = useState('home');
+  const [value, setValue] = React.useState(0);
 
   const handleNavigation = (element) => {
     setActiveElement(element);
@@ -93,7 +58,7 @@ function App() {
       </div>
 
       <div className='footer'>
-        
+      
       </div>
     </div>
   );

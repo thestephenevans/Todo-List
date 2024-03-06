@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import axios from "axios";
 
 export default function TikTok(){
     const [categoryData, setCategoryData] = useState(null);

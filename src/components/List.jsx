@@ -3,6 +3,8 @@ import React, { useState, useEffect } from 'react';
 export default function List() {
     const [list, setList] = useState([]);
     const [input, setInput] = useState('');
+    const [showingCompleted, setShowingCompleted] = useState(false);
+
   
     // Load todo list from local storage when component mounts
     useEffect(() => {
@@ -25,7 +27,7 @@ export default function List() {
     function handleSubmit(e) {
       e.preventDefault();
       if(input.length > 0) {
-        const newTodo = { id: Date.now(), value: input, completed: false };
+        const newTodo = { id: Date.now(), value: input, category: '', completed: false };
         updateList([...list, newTodo]);
         setInput('');
       }
@@ -45,6 +47,22 @@ export default function List() {
       });
       updateList(updatedList);
     }
+
+    function showCompletedTodos() {
+      if (showingCompleted) {
+        const storedList = JSON.parse(localStorage.getItem('todoList'));
+        setList(storedList);
+        setShowingCompleted(false);
+      } else {
+        const completedList = list.filter(todo => todo.completed);
+        if (completedList.length > 0) {
+          setList(completedList);
+          setShowingCompleted(true);
+        } else {
+          alert('No Completed Todos');
+        }
+      }
+    }
   
     return (
       <>
@@ -53,6 +71,8 @@ export default function List() {
           <form className='form' onSubmit={handleSubmit}>
             <input value={input} type='text' className='user-input' onChange={e => addTodo(e.target.value)}/>
             <button className='button'>Submit</button>
+
+            <button className='completed-button' onClick={showCompletedTodos}>{showingCompleted ? "Show all tasks" : "Show all completed Tasks"}</button>
           </form>
   
           <ol className='list'>
