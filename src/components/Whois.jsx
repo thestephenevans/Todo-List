@@ -8,7 +8,7 @@ export default function Whois(){
 
     const options = {
         method: 'GET',
-        url: `http://api.whoapi.com/?domain=${lookupValue}&r=whois&apikey=79b0d7a3967aef98f11eab1d41cc99d6`,
+        url: `https://api.whoapi.com/?domain=${lookupValue}&r=whois&apikey=79b0d7a3967aef98f11eab1d41cc99d6`,
     }
 
     const optionsRecords = {
