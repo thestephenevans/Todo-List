@@ -12,6 +12,7 @@ import Tooltip from '@mui/material/Tooltip';
 import CheckBoxIcon from '@mui/icons-material/CheckBox';
 import TextField from '@mui/material/TextField';
 import Checkbox from '@mui/material/Checkbox';
+import Box from '@mui/material/Box';
 
 import { blue } from '@mui/material/colors';
 import { red } from '@mui/material/colors';
