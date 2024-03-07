@@ -1,5 +1,21 @@
 import React, { useState, useEffect } from 'react';
 
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
+
+import Typography from '@mui/material/Typography';
+import DeleteIcon from '@mui/icons-material/Delete';
+import IconButton from '@mui/material/IconButton';
+import Tooltip from '@mui/material/Tooltip';
+import CheckBoxIcon from '@mui/icons-material/CheckBox';
+import TextField from '@mui/material/TextField';
+import Checkbox from '@mui/material/Checkbox';
+
+import { blue } from '@mui/material/colors';
+import { red } from '@mui/material/colors';
+
 export default function List() {
     const [list, setList] = useState([]);
     const [input, setInput] = useState('');
@@ -67,9 +83,11 @@ export default function List() {
     return (
       <>
         <div className='main'>
-          <h2>Todo List</h2>
+          <Typography variant = "h2" component="h1" mb={4}> Todo List </Typography>
           <form className='form' onSubmit={handleSubmit}>
-            <input value={input} type='text' className='user-input' onChange={e => addTodo(e.target.value)}/>
+            <TextField id="outlined-basic" label="Enter Task" variant="filled" value={input} onChange={e => addTodo(e.target.value)} 
+              sx={{backgroundColor: blue[400]}}
+            />
             <button className='button'>Submit</button>
 
             <button className='completed-button' onClick={showCompletedTodos}>{showingCompleted ? "Show all tasks" : "Show all completed Tasks"}</button>
@@ -78,13 +96,13 @@ export default function List() {
           <ol className='list'>
             {list.map((todo) => (
               <li key={todo.id} className={todo.completed ? 'completed' : ''}>
-                <input 
-                  type='checkbox' 
-                  checked={todo.completed} 
-                  onChange={(e) => handleCompleted(todo.id, e.target.checked)}
-                />
+                <Checkbox checked={todo.completed} color='success' sx={{color: blue[400]}} onChange={(e) => handleCompleted(todo.id, e.target.checked)}/>
                 {todo.value}
-                <button variant="outlined" color='error' className='delete-button' onClick={() => handleDelete(todo.id)}>Delete</button>
+                <Tooltip title="Delete">
+                  <IconButton onClick={() => handleDelete(todo.id)}>
+                    <DeleteIcon color="primary" sx={{color: red[400]}} />
+                  </IconButton>
+                </Tooltip>
               </li>
             ))}
           </ol>

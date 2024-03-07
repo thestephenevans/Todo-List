@@ -1,6 +1,13 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
+
+import Typography from '@mui/material/Typography';
+
 export default function Whois(){
     const [whoisData, setWhoisData] = useState(null);
     const [recordData, setRecordData] = useState(null);
@@ -53,7 +60,7 @@ export default function Whois(){
     return (
         <>
             <div className="whois-main">
-                <h1>Whois Lookup</h1>
+                <Typography variant = "h2" component="h1" mb={4}> Whois Lookup </Typography>
                 <form className="lookup-form" onSubmit={handleLookup}>
                     <input type="text" value={lookupValue} onChange={(e) => changeWebsite(e.target.value)}></input>
                     <button type="submit">Lookup</button>
@@ -68,24 +75,26 @@ export default function Whois(){
                             ))}
                         </div>
                         {recordData &&
-                            <div className="records">
-                                <strong>Records</strong>
-                                <strong>A records:</strong> {recordData.records.A.map((record, i) => (
-                                    <span key={i}>{record.address}</span>
-                                ))}
+                            <>
+                                <div className="records">
+                                    <strong>Records</strong>
+                                    <strong>A records:</strong> {recordData.records.A.map((record, i) => (
+                                        <span key={i}>{record.address}</span>
+                                    ))}
 
-                                <strong>CNAME records:</strong> {recordData.records.CNAME.map((record, i) => (
-                                    <span key={i}>{record.address}</span>
-                                ))}
+                                    <strong>CNAME records:</strong> {recordData.records.CNAME.map((record, i) => (
+                                        <span key={i}>{record.address}</span>
+                                    ))}
 
-                                <strong>MX records:</strong> {recordData.records.MX.map((record, i) => (
-                                    <span key={i}>{record.exchange}</span>
-                                ))}
+                                    <strong>MX records:</strong> {recordData.records.MX.map((record, i) => (
+                                        <span key={i}>{record.exchange}</span>
+                                    ))}
 
-                                <strong>TXT records:</strong> {recordData.records.TXT.map((record, i) => (
-                                    <span key={i}>{record}</span>
-                                ))}
-                            </div>
+                                    <strong>TXT records:</strong> {recordData.records.TXT.map((record, i) => (
+                                        <span key={i}>{record}</span>
+                                    ))}
+                                </div>
+                            </>
                         }
                     </div>
                 }

@@ -1,5 +1,12 @@
 import React, { useState, useEffect } from 'react';
 
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
+
+import Typography from '@mui/material/Typography';
+
 export default function Redirects(){
     const [redirectTo, setRedirectTo] = useState('');
     const [oldSlug, setOldSlug] = useState('');
@@ -31,7 +38,7 @@ export default function Redirects(){
   
     return (
       <>
-        <h2>Redirects</h2>
+        <Typography variant = "h2" component="h1" mb={4}> Redirects </Typography>
         <div className = "redirects-main">
           <form className='redirect-to' onSubmit={e => e.preventDefault()}>
             <label htmlFor="toURL"><strong>Redirect to:</strong></label>
